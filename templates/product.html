@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="product-detail">
+  <div class="images">
+    {% for img in product.images.all %}
+      <img src="{{ img.image.url }}" alt="{{ product.name }}">
+    {% endfor %}
+  </div>
+  <div class="info">
+    <h1>{{ product.name }}</h1>
+    <p class="price">{{ product.price }}$</p>
+    <p class="stock">الكمية المتوفرة: {{ product.quantity }}</p>
+    <p class="desc">{{ product.description }}</p>
+    <form action="/cart/add/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <input type="number" name="quantity" value="1" min="1">
+      <button type="submit">أضف للسلة</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

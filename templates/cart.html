@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>السلة</h1>
+{% if items %}
+<table class="cart-table">
+  <thead><tr><th>المنتج</th><th>الكمية</th><th>المجموع</th></tr></thead>
+  <tbody>
+  {% for it in items %}
+    <tr>
+      <td>{{ it.product.name }}</td>
+      <td>{{ it.quantity }}</td>
+      <td>{{ it.subtotal }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p class="total">الإجمالي: {{ total }}</p>
+<a class="btn" href="/checkout/">تأكيد الطلب عبر واتساب</a>
+{% else %}
+<p>السلة فارغة.</p>
+{% endif %}
+{% endblock %}

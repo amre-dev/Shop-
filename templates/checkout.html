@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>تفاصيل الطلب</h1>
+<form method="post">
+  {% csrf_token %}
+  <label>الاسم</label><input name="name" required>
+  <label>رقم الهاتف</label><input name="phone" required>
+  <label>العنوان</label><textarea name="address"></textarea>
+  <label>ملاحظة</label><textarea name="note"></textarea>
+  <button type="submit">تأكيد وإرسال عبر واتساب</button>
+</form>
+{% endblock %}

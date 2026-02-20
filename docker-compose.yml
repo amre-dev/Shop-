@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+    volumes:
+      - .:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
+volumes:
+  static_volume:
+  media_volume:

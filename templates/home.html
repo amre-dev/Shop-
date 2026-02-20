@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="page-title">الأقسام</h1>
+<div class="cards-grid">
+  {% for cat in categories %}
+  <a class="card" href="{{ cat.get_absolute_url }}">
+    {% if cat.image %}<img src="{{ cat.image.url }}" alt="{{ cat.name }}">{% endif %}
+    <div class="card-body">
+      <h3>{{ cat.name }}</h3>
+      {% if cat.description %}<p>{{ cat.description|truncatechars:80 }}</p>{% endif %}
+    </div>
+  </a>
+  {% empty %}
+    <p>لا توجد أقسام بعد.</p>
+  {% endfor %}
+</div>
+{% endblock %}
